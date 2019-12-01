@@ -6,7 +6,8 @@ import pandas as pd
 
 # Importing the dataset in current directory
 dataset = pd.read_csv('Data.csv')
-#import the independent valriable contains all rows and all columns except the last one
+#import the independent variable contains all rows and all columns 
+#import the dependent variable: The last column
 X = dataset.iloc[:, :-1].values
 Y = dataset.iloc[:, 3].values
 
@@ -15,7 +16,7 @@ Y = dataset.iloc[:, 3].values
 from sklearn.impute import SimpleImputer
 #filling based on mean, median, most_frequent works for numerical values
 missing_values = SimpleImputer(missing_values=np.nan,strategy="mean")
-#Filling based on constant
+#Filling based on constant, uncomment the below line
 #missing_values = SimpleImputer(missing_values=np.nan,strategy="constant",fill_value=20)
 missing_values = missing_values.fit(X[:,1:3])
 X[:,1:3]=missing_values.transform(X[:,1:3])
